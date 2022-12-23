@@ -6,7 +6,7 @@
 /*   By: bkozluca <bkozluca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 00:05:07 by bkozluca          #+#    #+#             */
-/*   Updated: 2022/12/23 14:26:08 by bkozluca         ###   ########.fr       */
+/*   Updated: 2022/12/23 14:39:14 by bkozluca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ typedef struct s_philo
 }	t_philo;
 
 //ARG
-int	ft_atoi(char *str);
-int	is_arg_zero(char c);
-int	arg_check(int argc, char **argv);
+int		ft_atoi(char *str);
+int		is_arg_zero(char c);
+int		arg_check(int argc, char **argv);
 //PHILO
 
 #endif
