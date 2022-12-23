@@ -6,7 +6,7 @@
 /*   By: bkozluca <bkozluca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 00:05:07 by bkozluca          #+#    #+#             */
-/*   Updated: 2022/12/23 14:39:14 by bkozluca         ###   ########.fr       */
+/*   Updated: 2022/12/23 14:46:50 by bkozluca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ int		ft_atoi(char *str);
 int		is_arg_zero(char c);
 int		arg_check(int argc, char **argv);
 //PHILO
-
+int		init_data(t_data *data, int argc, char **argv);
 #endif
