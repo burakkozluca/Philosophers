@@ -6,7 +6,7 @@
 /*   By: bkozluca <bkozluca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 00:05:07 by bkozluca          #+#    #+#             */
-/*   Updated: 2022/12/23 14:46:50 by bkozluca         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:58:30 by bkozluca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,13 @@ typedef	struct s_data
 
 typedef struct s_philo
 {
-
+	pthread_t	thread;
+	long		last_meal;
+	int			ate;
+	int			philo_id;
+	int			left_fork;
+	int			right_fork;
+	t_data		*data_of_philo;
 }	t_philo;
 
 //ARG
@@ -44,4 +50,6 @@ int		is_arg_zero(char c);
 int		arg_check(int argc, char **argv);
 //PHILO
 int		init_data(t_data *data, int argc, char **argv);
+//LOOP
+
 #endif

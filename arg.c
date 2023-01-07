@@ -6,11 +6,19 @@
 /*   By: bkozluca <bkozluca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 09:36:51 by bkozluca          #+#    #+#             */
-/*   Updated: 2022/12/23 14:38:40 by bkozluca         ###   ########.fr       */
+/*   Updated: 2023/01/07 15:02:07 by bkozluca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+long	get_time(void)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return((time.tv_sec * 1000) + (time.tv_usec / 1000));
+}
 
 int	ft_atoi(char *str)
 {

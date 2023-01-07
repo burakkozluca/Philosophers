@@ -6,7 +6,7 @@
 /*   By: bkozluca <bkozluca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 00:05:10 by bkozluca          #+#    #+#             */
-/*   Updated: 2022/12/23 14:46:29 by bkozluca         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:08:36 by bkozluca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,8 @@ int main(int argc, char **argv)
 		}
 		if(init_data(&data, argc, argv) == 1)
 			return (1);
+		if(arg_check(&data, argc) == 1)
+			return (1);
+
 	}
 }
