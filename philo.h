@@ -6,7 +6,7 @@
 /*   By: bkozluca <bkozluca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 00:05:07 by bkozluca          #+#    #+#             */
-/*   Updated: 2023/01/07 14:58:30 by bkozluca         ###   ########.fr       */
+/*   Updated: 2023/01/07 17:27:30 by bkozluca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,17 @@ typedef struct s_philo
 int		ft_atoi(char *str);
 int		is_arg_zero(char c);
 int		arg_check(int argc, char **argv);
+void	print(t_philo *philo, char *state);
+long	get_time(void);
+int		check_meals(t_philo *philo);
+
 //PHILO
 int		init_data(t_data *data, int argc, char **argv);
+
 //LOOP
+int		start_life(t_philo *philo);
+void	eat_func(t_philo *philo);
+void	*loop(void *ptr);
+void	*check_life(void *ptr);
 
 #endif

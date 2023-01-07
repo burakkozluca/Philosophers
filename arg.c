@@ -6,7 +6,7 @@
 /*   By: bkozluca <bkozluca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 09:36:51 by bkozluca          #+#    #+#             */
-/*   Updated: 2023/01/07 15:02:07 by bkozluca         ###   ########.fr       */
+/*   Updated: 2023/01/07 17:25:50 by bkozluca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,37 @@ int	arg_check(int argc, char **argv)
 		i++;
 	}
 	return (1);
+}
+
+void	print(t_philo *philo, char *state)
+{
+	long	current_time;
+
+	current_time = get_time() - philo->data_of_philo->start_time;
+	pthread_mutex_lock(&philo->data_of_philo->print_lock);
+	if(!philo->data_of_philo->is_dead)
+		printf("%ld %d %s\n", current_time, philo->philo_id, state);
+	pthread_mutex_unlock(&philo->data_of_philo->print_lock);
+}
+
+int	check_meals(t_philo *philo)
+{
+	int	i;
+
+	i = 0;
+	if (philo->data_of_philo->must_eat > 0)
+	{
+		while (i < philo->data_of_philo->n_philo)
+		{
+			if(philo[i].ate >= philo->data_of_philo->must_eat)
+				philo->data_of_philo->sum_meal++;
+			i++;
+		}
+		if (philo->data_of_philo->sum_meal >= philo->data_of_philo->n_philo)
+		{
+			philo->data_of_philo->is_dead = 1;
+			return (1);
+		}
+	}
+	return (0);
 }
