@@ -6,7 +6,7 @@
 /*   By: burakkozluca <burakkozluca@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:54:52 by bkozluca          #+#    #+#             */
-/*   Updated: 2023/01/09 16:30:43 by burakkozluc      ###   ########.fr       */
+/*   Updated: 2023/01/09 16:58:32 by burakkozluc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	*loop(void *ptr)
 	philo = (t_philo *)ptr;
 	if(philo->philo_id % 2 == 0)
 	{
-		printf(philo, "is thinking");
+		print(philo, "is thinking");
 		usleep(1600); //1600 olma sebebi
 	}
 	while (philo->data_of_philo->is_dead != 1)

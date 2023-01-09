@@ -5,7 +5,7 @@ RM =		rm -rf
 
 SRC =		philo.c \
 			loop.c \
-			philo_utils.c
+			arg.c
 
 OBJECTS =	$(SRC:.c=.o)
 

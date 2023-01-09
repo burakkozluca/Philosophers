@@ -6,11 +6,23 @@
 /*   By: burakkozluca <burakkozluca@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 00:05:10 by bkozluca          #+#    #+#             */
-/*   Updated: 2023/01/09 16:28:32 by burakkozluc      ###   ########.fr       */
+/*   Updated: 2023/01/09 17:01:49 by burakkozluc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	check_args(t_data *data, int ac)
+{
+	(void)ac;
+	if (data->n_philo < 1 || data->n_philo > 200 || data->t_die < 0 || \
+		data->t_eat < 0 || data->t_sleep < 0)
+	{
+		printf("Error: Incorrect arguments.\n");
+		return (1);
+	}
+	return (0);
+}
 
 t_philo *init_philo(t_data *data)
 {
@@ -70,7 +82,7 @@ int main(int argc, char **argv)
 		}
 		if(init_data(&data, argc, argv) == 1)
 			return (1);
-		if(arg_check(argc, &data) == 1)
+		if(check_args(&data, argc) == 1)
 			return (1);
 		philo = init_philo(&data);
 		if(start_life(philo) == 1)
@@ -78,6 +90,9 @@ int main(int argc, char **argv)
 			printf("Failed to create thread");
 			return (1);
 		}
-		
+		free_philo(philo, &data);
 	}
+	else
+		printf("Error: Incorrect count of argument.\n");
+	return (0);
 }
