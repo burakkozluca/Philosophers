@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkozluca <bkozluca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: burakkozluca <burakkozluca@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 00:05:07 by bkozluca          #+#    #+#             */
-/*   Updated: 2023/01/07 17:27:30 by bkozluca         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:31:00 by burakkozluc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,13 @@ int		check_meals(t_philo *philo);
 
 //PHILO
 int		init_data(t_data *data, int argc, char **argv);
+t_philo	*init_philo(t_data *data);
 
 //LOOP
 int		start_life(t_philo *philo);
 void	eat_func(t_philo *philo);
 void	*loop(void *ptr);
 void	*check_life(void *ptr);
+void	free_philo(t_philo *philo, t_data *data);
 
 #endif

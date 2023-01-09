@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkozluca <bkozluca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: burakkozluca <burakkozluca@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:54:52 by bkozluca          #+#    #+#             */
-/*   Updated: 2023/01/07 17:35:06 by bkozluca         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:30:43 by burakkozluc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	free_philo(t_philo *philo, t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->n_philo)
+	{
+		pthread_mutex_destroy(&data->fork_lock[i]);
+		i++;
+	}
+	pthread_mutex_destroy(&data->print_lock);
+	free(data->fork_lock);
+	free(philo);
+}
 
 void	*loop(void *ptr)
 {

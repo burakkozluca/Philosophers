@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkozluca <bkozluca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: burakkozluca <burakkozluca@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 00:05:10 by bkozluca          #+#    #+#             */
-/*   Updated: 2023/01/07 17:27:34 by bkozluca         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:28:32 by burakkozluc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+t_philo *init_philo(t_data *data)
+{
+	t_philo *philo;
+	int		i;
+
+	i = 0;
+	philo = malloc(sizeof(t_philo) * data->n_philo);
+	while (i < data->n_philo)
+	{
+		philo[i].philo_id = i + 1;
+		philo[i].left_fork = i;
+		philo[i].right_fork = i + 1;
+		philo[i].last_meal = get_time();
+		philo[i].ate = 0;
+		philo[i].data_of_philo = data;
+		pthread_mutex_init(&data->fork_lock[i], NULL);
+		i++;
+	}
+	i--;
+	philo[i].right_fork = 0;
+	return (philo);
+}
 
 int	init_data(t_data *data, int argc, char **argv)
 {
@@ -47,8 +70,14 @@ int main(int argc, char **argv)
 		}
 		if(init_data(&data, argc, argv) == 1)
 			return (1);
-		if(arg_check(&data, argc) == 1)
+		if(arg_check(argc, &data) == 1)
 			return (1);
-		//start philo
+		philo = init_philo(&data);
+		if(start_life(philo) == 1)
+		{
+			printf("Failed to create thread");
+			return (1);
+		}
+		
 	}
 }
